@@ -1,4 +1,4 @@
-package org.energydrink.service.LoadServices;
+package org.energydrink.service.loadServices;
 
 import org.models.EnergyDrink;
 import org.utils.common.BaseLoadFile;

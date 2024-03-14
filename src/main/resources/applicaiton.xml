@@ -4,8 +4,15 @@
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="orderService" class="org.energydrink.service.OrderService"/>
-    <bean id="drinkLoadService" class="org.energydrink.service.LoadServices.DrinkLoadServices"/>
+    <bean id="drinkLoadService" class="org.energydrink.service.loadServices.DrinkLoadServices"/>
+    <bean id="orderLoadService" class="org.energydrink.service.loadServices.oderService.OrderLoadService"/>
+    <bean id="normalOrderLoadService" class="org.energydrink.service.loadServices.oderService.NormalOrderLoadService"/>
+    <bean id="specialOrderLoadService" class="org.energydrink.service.loadServices.oderService.SpecialOrderLoadService"/>
+
+    <bean id="orderService" class="org.energydrink.service.OrderService" factory-method="of">
+        <constructor-arg value="NORMAL"/>
+    </bean>
+
     <bean id="drinkService" class="org.energydrink.service.DrinkService">
         <constructor-arg ref="drinkLoadService"/>
     </bean>

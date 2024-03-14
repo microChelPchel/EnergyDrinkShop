@@ -1,6 +1,6 @@
 package org.energydrink.service;
 
-import org.energydrink.service.LoadServices.DrinkLoadServices;
+import org.energydrink.service.loadServices.DrinkLoadServices;
 import org.models.EnergyDrink;
 
 import java.io.IOException;
