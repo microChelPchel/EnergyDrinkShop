@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+    <context:property-placeholder location="classpath:applicaiton.properties"/>
+
+    <bean id="strategy" class="java.lang.String">
+        <constructor-arg type="java.lang.String" value="#{'${strategy.first}'.equals('beanName2')?'yes':'false'}"/>
+    </bean>
+
 
     <bean id="drinkLoadService" class="org.energydrink.service.loadServices.DrinkLoadServices"/>
     <bean id="orderLoadService" class="org.energydrink.service.loadServices.oderService.OrderLoadService"/>
     <bean id="normalOrderLoadService" class="org.energydrink.service.loadServices.oderService.NormalOrderLoadService"/>
-    <bean id="specialOrderLoadService" class="org.energydrink.service.loadServices.oderService.SpecialOrderLoadService"/>
+    <bean id="specialOrderLoadService"
+          class="org.energydrink.service.loadServices.oderService.SpecialOrderLoadService"/>
 
-    <bean id="orderService" class="org.energydrink.service.OrderService" factory-method="of">
+    <bean id="orderService" class="org.energydrink.service.OrderService" factory-method="of" init-method="init"
+          destroy-method="destroy">
         <constructor-arg value="NORMAL"/>
     </bean>
 

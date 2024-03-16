@@ -10,6 +10,7 @@ public class Main {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicaiton.xml");
 
+        System.out.println(context.getBean("strategy", String.class));
         System.out.println(context.getBean("drinkService", DrinkService.class));
         System.out.println(context.getBean("drinkLoadService", DrinkLoadServices.class));
         System.out.println(context.getBean("orderService", OrderService.class));

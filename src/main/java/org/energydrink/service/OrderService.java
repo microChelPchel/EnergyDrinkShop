@@ -23,4 +23,12 @@ public class OrderService {
         return new OrderService(loadService);
     }
 
+    private void init() {
+        System.out.println("пока не придумал, практикуемся инициализировать данные перед созданием бина)");
+    }
+
+    private void destroy() {
+        System.out.println("пока не придумал, практикуемся очищать бины перед удалением)");
+    }
+
 }
